@@ -26,6 +26,15 @@
     transform: translateX(0);
 }
 
+/* Backdrop for sidebar on mobile */
+#sidebarBackdrop {
+    display: none;
+}
+
+#sidebarBackdrop.open {
+    display: block;
+}
+
 /* Notification panel adjustments */
 #notificationsPanel {
     transform: translateX(100%);
@@ -49,6 +58,11 @@
 
     main {
         margin-left: 0 !important; /* Ensure main content isn't pushed by sidebar on mobile */
+        z-index: 10; /* Ensure main content is below sidebar and backdrop */
+    }
+
+    #sidebarBackdrop.open {
+        display: block; /* Show backdrop when sidebar is open on mobile */
     }
 }
 
@@ -59,6 +73,10 @@
 
     #notificationsPanel {
         width: 300px; /* Fixed width on desktop */
+    }
+
+    #sidebarBackdrop {
+        display: none !important; /* Never show backdrop on desktop */
     }
 }
 

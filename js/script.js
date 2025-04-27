@@ -1,9 +1,22 @@
 function toggleSidebar() {
     try {
         const sidebar = document.getElementById('sidebar');
+        const backdrop = document.getElementById('sidebarBackdrop');
         sidebar.classList.toggle('open');
+        backdrop.classList.toggle('open');
     } catch (error) {
         console.error('Error toggling sidebar:', error);
+    }
+}
+
+function closeSidebar() {
+    try {
+        const sidebar = document.getElementById('sidebar');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('open');
+    } catch (error) {
+        console.error('Error closing sidebar:', error);
     }
 }
 
@@ -89,12 +102,35 @@ function setBudget() {
     }
 }
 
+// Close sidebar when clicking a menu item on mobile
 document.addEventListener('DOMContentLoaded', () => {
     try {
         if (localStorage.getItem('darkMode') === 'true') {
             document.body.classList.add('dark-mode');
         }
+
+        const sidebar = document.getElementById('sidebar');
+        const menuLinks = sidebar.querySelectorAll('nav a, nav .submenu a');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) { // Only on mobile
+                    closeSidebar();
+                }
+            });
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (event) => {
+            if (window.innerWidth <= 768) {
+                const sidebar = document.getElementById('sidebar');
+                const toggleButton = document.querySelector('.md\\:hidden.text-gray-800'); // Hamburger button
+                if (!sidebar.contains(event.target) && !toggleButton.contains(event.target) && sidebar.classList.contains('open')) {
+                    closeSidebar();
+                }
+            }
+        });
     } catch (error) {
-        console.error('Error initializing dark mode:', error);
+        console.error('Error initializing:', error);
     }
 });
