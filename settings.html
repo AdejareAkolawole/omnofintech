@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omno - Settings</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="font-poppins bg-gray-100 flex">
+    <!-- Sidebar -->
+    <aside class="bg-gradient-to-b from-blue-600 to-purple-600 text-white w-64 h-screen p-4 fixed">
+        <h1 class="text-2xl font-bold flex items-center">
+            <i class="fas fa-wallet mr-2"></i> Omno
+        </h1>
+        <nav class="mt-8">
+            <a href="index.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center"><i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a>
+            <a href="transfer.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center"><i class="fas fa-paper-plane mr-2"></i> Transfers</a>
+            <a href="savings.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center"><i class="fas fa-piggy-bank mr-2"></i> Savings Goals</a>
+            <a href="crypto.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center"><i class="fas fa-coins mr-2"></i> Crypto Wallet</a>
+            <a href="settings.html" class="block py-2 px-4 bg-purple-700 rounded flex items-center"><i class="fas fa-cog mr-2"></i> Settings</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8 ml-64">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 animate-fade-in">Settings</h2>
+
+        <!-- Language Selection -->
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-6 animate-slide-up">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Language</h3>
+            <select id="languageSelect" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                <option value="en">🇺🇳 English</option>
+                <option value="es">🇪🇸 Spanish</option>
+                <option value="fr">🇫🇷 French</option>
+            </select>
+        </div>
+
+        <!-- Dark Mode Toggle -->
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-6 animate-slide-up">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Appearance</h3>
+            <button id="darkModeToggle" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-transform transform hover:scale-105 flex items-center">
+                <i class="fas fa-moon mr-2"></i> Toggle Dark Mode
+            </button>
+        </div>
+
+        <!-- Notification Preferences -->
+        <div class="bg-white p-6 rounded-lg shadow-lg animate-slide-up">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Notifications</h3>
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" id="emailNotifications" class="h-5 w-5 text-purple-600">
+                <span class="text-gray-600">Receive email notifications</span>
+            </label>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

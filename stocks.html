@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omno - Stocks</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="font-poppins bg-gray-100 flex">
+    <aside class="bg-gradient-to-b from-blue-600 to-purple-600 text-white w-64 h-screen p-4 fixed transform transition-transform duration-300 flex flex-col" id="sidebar">
+        <div class="flex items-center mb-6">
+            <div class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-3">JD</div>
+            <div>
+                <p class="font-semibold">codewithadejare</p>
+                <p class="text-sm opacity-75">Premium Member</p>
+            </div>
+            <button class="md:hidden ml-auto text-white" onclick="toggleSidebar()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="flex-1">
+            <a href="dashboard.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center mb-1"><i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a>
+            <div class="menu-item">
+                <button class="block w-full text-left py-2 px-4 hover:bg-purple-700 rounded flex items-center mb-1" onclick="toggleSubmenu('transfersSubmenu')">
+                    <i class="fas fa-paper-plane mr-2"></i> Transfers <i class="fas fa-chevron-down ml-auto submenu-icon"></i>
+                </button>
+                <div id="transfersSubmenu" class="submenu hidden pl-8">
+                    <a href="transfer.html" class="block py-2 hover:bg-purple-700 rounded">P2P Transfer</a>
+                    <a href="transfer.html" class="block py-2 hover:bg-purple-700 rounded">International Transfer</a>
+                    <a href="transfer.html" class="block py-2 hover:bg-purple-700 rounded">Quick Transfer</a>
+                </div>
+            </div>
+            <a href="converter.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center mb-1"><i class="fas fa-exchange-alt mr-2"></i> Converter</a>
+            <a href="track.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center mb-1"><i class="fas fa-search mr-2"></i> Track Payment</a>
+            <a href="savings.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center mb-1"><i class="fas fa-piggy-bank mr-2"></i> Savings Goals</a>
+            <a href="crypto.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center mb-1"><i class="fas fa-coins mr-2"></i> Crypto Wallet</a>
+            <div class="menu-item">
+                <button class="block w-full text-left py-2 px-4 bg-purple-700 rounded flex items-center mb-1" onclick="toggleSubmenu('investmentsSubmenu')">
+                    <i class="fas fa-chart-line mr-2"></i> Investments <i class="fas fa-chevron-down ml-auto submenu-icon"></i>
+                </button>
+                <div id="investmentsSubmenu" class="submenu pl-8">
+                    <a href="stocks.html" class="block py-2 bg-purple-600 rounded">Stocks</a>
+                    <a href="bonds.html" class="block py-2 hover:bg-purple-700 rounded">Bonds</a>
+                    <a href="mutual-funds.html" class="block py-2 hover:bg-purple-700 rounded">Mutual Funds</a>
+                </div>
+            </div>
+            <a href="payment-methods.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center mb-1"><i class="fas fa-credit-card mr-2"></i> Payment Methods</a>
+            <a href="#" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center mb-1 relative" onclick="toggleNotifications()">
+                <i class="fas fa-bell mr-2"></i> Notifications
+                <span id="notificationCount" class="absolute right-4 bg-red-500 text-white text-xs rounded-full px-2 py-1">3</span>
+            </a>
+            <a href="support.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center mb-1"><i class="fas fa-headset mr-2"></i> Support</a>
+            <div class="menu-item">
+                <button class="block w-full text-left py-2 px-4 hover:bg-purple-700 rounded flex items-center mb-1" onclick="toggleSubmenu('settingsSubmenu')">
+                    <i class="fas fa-cog mr-2"></i> Settings <i class="fas fa-chevron-down ml-auto submenu-icon"></i>
+                </button>
+                <div id="settingsSubmenu" class="submenu hidden pl-8">
+                    <a href="profile.html" class="block py-2 hover:bg-purple-700 rounded">Profile</a>
+                    <a href="settings.html#security" class="block py-2 hover:bg-purple-700 rounded">Security</a>
+                    <a href="settings.html#preferences" class="block py-2 hover:bg-purple-700 rounded">Preferences</a>
+                </div>
+            </div>
+        </nav>
+        <div class="mt-auto">
+            <button class="block w-full text-left py-2 px-4 hover:bg-purple-700 rounded flex items-center mb-1" onclick="toggleDarkMode()">
+                <i class="fas fa-moon mr-2"></i> Dark Mode
+            </button>
+            <a href="index.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center mb-1"><i class="fas fa-sign-out-alt mr-2"></i> Sign Out</a>
+            <p class="text-xs opacity-75 text-center">Omno v1.0.0</p>
+        </div>
+    </aside>
+
+    <div class="fixed right-0 top-0 w-64 h-screen bg-white shadow-lg transform translate-x-full transition-transform duration-300" id="notificationsPanel">
+        <div class="p-4 border-b flex justify-between items-center">
+            <h3 class="text-xl font-semibold text-gray-800">Notifications</h3>
+            <button onclick="toggleNotifications()"><i class="fas fa-times text-gray-600"></i></button>
+        </div>
+        <div id="notificationsList" class="p-4 space-y-4">
+            <p class="text-gray-600"><i class="fas fa-check-circle text-green-500 mr-2"></i> Transfer of $100 to Sarah completed!</p>
+            <p class="text-gray-600"><i class="fas fa-info-circle text-blue-500 mr-2"></i> Your savings goal is 60% complete!</p>
+            <p class="text-gray-600"><i class="fas fa-exclamation-circle text-yellow-500 mr-2"></i> BTC price dropped by 2%.</p>
+        </div>
+    </div>
+
+    <main class="flex-1 p-8 ml-0 md:ml-64">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-3xl font-bold text-gray-800 animate-fade-in">Stocks</h2>
+            <button class="md:hidden text-gray-800" onclick="toggleSidebar()">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg animate-slide-up">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Your Stock Portfolio</h3>
+            <ul class="space-y-3">
+                <li class="py-2 border-b flex justify-between"><span>Apple (AAPL)</span><span>$150.25</span><span class="text-green-500">+2.3%</span></li>
+                <li class="py-2 border-b flex justify-between"><span>Tesla (TSLA)</span><span>$725.50</span><span class="text-red-500">-1.8%</span></li>
+                <li class="py-2 border-b flex justify-between"><span>Amazon (AMZN)</span><span>$3,250.75</span><span class="text-green-500">+0.9%</span></li>
+            </ul>
+            <button onclick="alert('Feature coming soon!')" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-transform transform hover:scale-105 mt-4">Invest in Stocks</button>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

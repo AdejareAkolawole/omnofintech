@@ -1,0 +1,72 @@
+/* Custom styles for Omno */
+
+/* Font Family */
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes flash {
+    0% { background-color: #ffffff; }
+    50% { background-color: #e0e7ff; }
+    100% { background-color: #ffffff; }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.5s ease-in;
+}
+
+.delay-100 {
+    animation-delay: 0.1s;
+}
+
+.delay-200 {
+    animation-delay: 0.2s;
+}
+
+.delay-300 {
+    animation-delay: 0.3s;
+}
+
+.flash {
+    animation: flash 1s ease-in-out;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #1a202c;
+    color: #e2e8f0;
+}
+
+.dark-mode .bg-white {
+    background-color: #2d3748;
+}
+
+.dark-mode .text-gray-800 {
+    color: #e2e8f0;
+}
+
+.dark-mode .text-gray-600 {
+    color: #a0aec0;
+}
+
+/* Responsive Sidebar */
+@media (max-width: 768px) {
+    #sidebar {
+        transform: translateX(-100%);
+    }
+}

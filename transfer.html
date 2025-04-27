@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omno - International Transfers</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="font-poppins bg-gray-100 flex">
+    <!-- Sidebar -->
+    <aside class="bg-gradient-to-b from-blue-600 to-purple-600 text-white w-64 h-screen p-4 fixed">
+        <h1 class="text-2xl font-bold flex items-center">
+            <i class="fas fa-wallet mr-2"></i> Omno
+        </h1>
+        <nav class="mt-8">
+            <a href="index.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center"><i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a>
+            <a href="transfer.html" class="block py-2 px-4 bg-purple-700 rounded flex items-center"><i class="fas fa-paper-plane mr-2"></i> Transfers</a>
+            <a href="savings.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center"><i class="fas fa-piggy-bank mr-2"></i> Savings Goals</a>
+            <a href="crypto.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center"><i class="fas fa-coins mr-2"></i> Crypto Wallet</a>
+            <a href="settings.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center"><i class="fas fa-cog mr-2"></i> Settings</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8 ml-64">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 animate-fade-in">Send Money Worldwide</h2>
+
+        <!-- Transfer Form -->
+        <div class="bg-white p-6 rounded-lg shadow-lg animate-slide-up">
+            <form id="transferForm" class="space-y-6">
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Destination Country</label>
+                    <select class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                        <option value="us">🇺🇸 United States (USD)</option>
+                        <option value="eu">🇪🇺 European Union (EUR)</option>
+                        <option value="br">🇧🇷 Brazil (BRL)</option>
+                        <option value="au">🇦🇺 Australia (AUD)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Amount (USD)</label>
+                    <input type="number" id="amount" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" placeholder="Enter amount" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Converted Amount</label>
+                    <p id="convertedAmount" class="text-gray-600">Select a country to see the converted amount.</p>
+                </div>
+                <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-transform transform hover:scale-105">Send Money</button>
+            </form>
+
+            <!-- Voice Command Button -->
+            <button id="voiceCommand" class="mt-4 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 flex items-center">
+                <i class="fas fa-microphone mr-2"></i> Use Voice Command
+            </button>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

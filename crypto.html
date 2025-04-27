@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omno - Crypto Wallet</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="font-poppins bg-gray-100 flex">
+    <!-- Sidebar -->
+    <aside class="bg-gradient-to-b from-blue-600 to-purple-600 text-white w-64 h-screen p-4 fixed transform transition-transform duration-300" id="sidebar">
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold flex items-center">
+                <i class="fas fa-wallet mr-2"></i> Omno
+            </h1>
+            <button class="md:hidden text-white" onclick="toggleSidebar()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="mt-8">
+            <a href="index.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center"><i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a>
+            <a href="transfer.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center"><i class="fas fa-paper-plane mr-2"></i> Transfers</a>
+            <a href="savings.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center"><i class="fas fa-piggy-bank mr-2"></i> Savings Goals</a>
+            <a href="crypto.html" class="block py-2 px-4 bg-purple-700 rounded flex items-center"><i class="fas fa-coins mr-2"></i> Crypto Wallet</a>
+            <a href="settings.html" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center"><i class="fas fa-cog mr-2"></i> Settings</a>
+            <a href="#" class="block py-2 px-4 hover:bg-purple-700 rounded flex items-center" onclick="toggleNotifications()"><i class="fas fa-bell mr-2"></i> Notifications</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8 ml-0 md:ml-64">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-3xl font-bold text-gray-800 animate-fade-in">Crypto Wallet</h2>
+            <button class="md:hidden text-gray-800" onclick="toggleSidebar()">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Wallet Balances -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white p-6 rounded-lg shadow-lg animate-slide-up">
+                <h3 class="text-xl font-semibold text-gray-800 flex items-center">
+                    <i class="fab fa-bitcoin text-purple-600 mr-2"></i> Bitcoin (BTC)
+                </h3>
+                <p class="text-gray-600 mt-2">Balance: <span id="btcBalance">0.5</span> BTC</p>
+                <p class="text-gray-600 mt-1">Current Price: $<span id="btcPrice">Loading...</span> USD</p>
+                <p class="text-gray-600 mt-1">Value: $<span id="btcValue">Loading...</span> USD</p>
+                <div class="flex space-x-4 mt-4">
+                    <button onclick="buyCrypto('BTC', 0.1)" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Buy 0.1 BTC</button>
+                    <button onclick="sellCrypto('BTC', 0.1)" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">Sell 0.1 BTC</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg animate-slide-up delay-100">
+                <h3 class="text-xl font-semibold text-gray-800 flex items-center">
+                    <i class="fab fa-ethereum text-purple-600 mr-2"></i> Ethereum (ETH)
+                </h3>
+                <p class="text-gray-600 mt-2">Balance: <span id="ethBalance">2.0</span> ETH</p>
+                <p class="text-gray-600 mt-1">Current Price: $<span id="ethPrice">Loading...</span> USD</p>
+                <p class="text-gray-600 mt-1">Value: $<span id="ethValue">Loading...</span> USD</p>
+                <div class="flex space-x-4 mt-4">
+                    <button onclick="buyCrypto('ETH', 0.5)" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Buy 0.5 ETH</button>
+                    <button onclick="sellCrypto('ETH', 0.5)" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">Sell 0.5 ETH</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Portfolio Value -->
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-lg shadow-lg animate-slide-up">
+            <h3 class="text-xl font-semibold">Total Portfolio Value</h3>
+            <p class="text-3xl font-bold mt-2">$<span id="totalValue">Loading...</span> USD</p>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
