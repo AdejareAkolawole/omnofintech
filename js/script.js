@@ -102,11 +102,23 @@ function setBudget() {
     }
 }
 
-// Close sidebar when clicking a menu item on mobile
+// Show skeleton loader on page load
 document.addEventListener('DOMContentLoaded', () => {
     try {
         if (localStorage.getItem('darkMode') === 'true') {
             document.body.classList.add('dark-mode');
+        }
+
+        // Skeleton loader for balance card
+        const balanceSkeleton = document.getElementById('balanceSkeleton');
+        const balanceContent = document.getElementById('balanceContent');
+        if (balanceSkeleton && balanceContent) {
+            balanceSkeleton.classList.remove('hidden');
+            balanceContent.classList.add('hidden');
+            setTimeout(() => {
+                balanceSkeleton.classList.add('hidden');
+                balanceContent.classList.remove('hidden');
+            }, 1000); // Simulate 1-second loading
         }
 
         const sidebar = document.getElementById('sidebar');

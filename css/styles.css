@@ -20,6 +20,8 @@
 /* Ensure sidebar is hidden off-screen by default on mobile */
 #sidebar {
     transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #sidebar.open {
@@ -29,40 +31,86 @@
 /* Backdrop for sidebar on mobile */
 #sidebarBackdrop {
     display: none;
+    transition: opacity 0.3s ease-in-out;
 }
 
 #sidebarBackdrop.open {
     display: block;
+    opacity: 1;
 }
 
-/* Notification panel adjustments */
+/* Notifications panel as a bottom sheet on mobile */
 #notificationsPanel {
-    transform: translateX(100%);
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px 16px 0 0;
 }
 
 #notificationsPanel.open {
-    transform: translateX(0);
+    transform: translateY(0);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     #sidebar {
-        width: 80%; /* Reduce width on mobile for better fit */
-        z-index: 50; /* Ensure it appears above other content */
+        width: 70%; /* Sleeker width on mobile */
     }
 
     #notificationsPanel {
-        width: 80%; /* Adjust width for mobile */
-        z-index: 50;
+        width: 100%;
+        max-height: 50vh;
     }
 
     main {
-        margin-left: 0 !important; /* Ensure main content isn't pushed by sidebar on mobile */
-        z-index: 10; /* Ensure main content is below sidebar and backdrop */
+        margin-left: 0 !important;
+        z-index: 10;
+        padding-bottom: 80px; /* Space for bottom nav */
     }
 
-    #sidebarBackdrop.open {
-        display: block; /* Show backdrop when sidebar is open on mobile */
+    /* Adjust font sizes and spacing for mobile */
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    p, li, span {
+        font-size: 0.95rem;
+    }
+
+    /* Increase button sizes for better touch targets */
+    button, a.button {
+        min-height: 48px;
+        font-size: 1rem;
+        padding: 12px 16px;
+    }
+
+    /* Adjust card padding and margins */
+    .bg-white {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Bottom navigation styling */
+    nav {
+        border-top: 1px solid #e5e7eb;
+        background-color: #ffffff;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    nav a, nav button {
+        padding: 8px;
+        transition: color 0.2s ease-in-out;
+    }
+
+    nav a:hover, nav button:hover {
+        color: #9333ea;
     }
 }
 
@@ -72,11 +120,29 @@
     }
 
     #notificationsPanel {
-        width: 300px; /* Fixed width on desktop */
+        transform: translateX(100%);
+        width: 300px;
+        max-height: 100vh;
+        border-radius: 0;
+        bottom: auto;
+        top: 0;
+    }
+
+    #notificationsPanel.open {
+        transform: translateX(0);
     }
 
     #sidebarBackdrop {
         display: none !important; /* Never show backdrop on desktop */
+    }
+
+    main {
+        padding-bottom: 0 !important; /* No bottom nav on desktop */
+    }
+
+    .bg-white {
+        padding: 2rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -113,4 +179,24 @@ body.dark-mode .bg-gray-200 {
 
 body.dark-mode .border-b {
     border-color: #4a5568;
+}
+
+body.dark-mode nav {
+    background-color: #2d3748;
+    border-top-color: #4a5568;
+}
+
+/* Hover and tap animations for buttons */
+button, a.button {
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+button:hover, a.button:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    button:active, a.button:active {
+        transform: scale(0.95);
+    }
 }
