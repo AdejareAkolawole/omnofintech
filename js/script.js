@@ -1,9 +1,14 @@
 function toggleSidebar() {
     try {
+        console.log('Toggling sidebar'); // Debug log
         const sidebar = document.getElementById('sidebar');
         const backdrop = document.getElementById('sidebarBackdrop');
-        sidebar.classList.toggle('open');
-        backdrop.classList.toggle('open');
+        if (sidebar && backdrop) {
+            sidebar.classList.toggle('open');
+            backdrop.classList.toggle('open');
+        } else {
+            console.error('Sidebar or backdrop not found');
+        }
     } catch (error) {
         console.error('Error toggling sidebar:', error);
     }
@@ -13,8 +18,10 @@ function closeSidebar() {
     try {
         const sidebar = document.getElementById('sidebar');
         const backdrop = document.getElementById('sidebarBackdrop');
-        sidebar.classList.remove('open');
-        backdrop.classList.remove('open');
+        if (sidebar && backdrop) {
+            sidebar.classList.remove('open');
+            backdrop.classList.remove('open');
+        }
     } catch (error) {
         console.error('Error closing sidebar:', error);
     }
@@ -23,7 +30,9 @@ function closeSidebar() {
 function toggleNotifications() {
     try {
         const notificationsPanel = document.getElementById('notificationsPanel');
-        notificationsPanel.classList.toggle('open');
+        if (notificationsPanel) {
+            notificationsPanel.classList.toggle('open');
+        }
     } catch (error) {
         console.error('Error toggling notifications:', error);
     }
@@ -32,11 +41,15 @@ function toggleNotifications() {
 function toggleSubmenu(submenuId) {
     try {
         const submenu = document.getElementById(submenuId);
-        submenu.classList.toggle('open');
-        const button = submenu.previousElementSibling;
-        const icon = button.querySelector('.submenu-icon');
-        icon.classList.toggle('fa-chevron-down');
-        icon.classList.toggle('fa-chevron-up');
+        if (submenu) {
+            submenu.classList.toggle('open');
+            const button = submenu.previousElementSibling;
+            const icon = button.querySelector('.submenu-icon');
+            if (icon) {
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            }
+        }
     } catch (error) {
         console.error('Error toggling submenu:', error);
     }
@@ -54,12 +67,14 @@ function toggleDarkMode() {
 function addPaymentMethod(type) {
     try {
         const paymentMethodsList = document.getElementById('paymentMethodsList');
-        const li = document.createElement('li');
-        li.className = 'py-2 border-b flex justify-between';
-        li.innerHTML = type === 'card' ? 
-            `<span>Visa **** 1234</span><button onclick="this.parentElement.remove()" class="text-red-500 hover:text-red-700">Remove</button>` :
-            `<span>Bank Account **** 5678</span><button onclick="this.parentElement.remove()" class="text-red-500 hover:text-red-700">Remove</button>`;
-        paymentMethodsList.appendChild(li);
+        if (paymentMethodsList) {
+            const li = document.createElement('li');
+            li.className = 'py-2 border-b flex justify-between';
+            li.innerHTML = type === 'card' ? 
+                `<span>Visa **** 1234</span><button onclick="this.parentElement.remove()" class="text-red-500 hover:text-red-700">Remove</button>` :
+                `<span>Bank Account **** 5678</span><button onclick="this.parentElement.remove()" class="text-red-500 hover:text-red-700">Remove</button>`;
+            paymentMethodsList.appendChild(li);
+        }
     } catch (error) {
         console.error('Error adding payment method:', error);
     }
@@ -102,7 +117,7 @@ function setBudget() {
     }
 }
 
-// Show skeleton loader on page load
+// Show skeleton loader on page load and set up sidebar functionality
 document.addEventListener('DOMContentLoaded', () => {
     try {
         if (localStorage.getItem('darkMode') === 'true') {
@@ -122,26 +137,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const sidebar = document.getElementById('sidebar');
-        const menuLinks = sidebar.querySelectorAll('nav a, nav .submenu a');
-
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) { // Only on mobile
-                    closeSidebar();
-                }
+        if (sidebar) {
+            const menuLinks = sidebar.querySelectorAll('nav a, nav .submenu a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) { // Only on mobile
+                        closeSidebar();
+                    }
+                });
             });
-        });
+        }
 
         // Close sidebar when clicking outside on mobile
         document.addEventListener('click', (event) => {
             if (window.innerWidth <= 768) {
                 const sidebar = document.getElementById('sidebar');
                 const toggleButton = document.querySelector('.md\\:hidden.text-gray-800'); // Hamburger button
-                if (!sidebar.contains(event.target) && !toggleButton.contains(event.target) && sidebar.classList.contains('open')) {
+                if (sidebar && toggleButton && !sidebar.contains(event.target) && !toggleButton.contains(event.target) && sidebar.classList.contains('open')) {
                     closeSidebar();
                 }
             }
         });
+
+        // Ensure "More" button toggles sidebar
+        const moreButton = document.querySelector('nav button[aria-label="More options"]');
+        if (moreButton) {
+            moreButton.addEventListener('click', toggleSidebar);
+        }
     } catch (error) {
         console.error('Error initializing:', error);
     }
