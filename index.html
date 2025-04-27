@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="font-poppins bg-gray-100 flex flex-col min-h-screen">
+<body class="font-poppins bg-gray-50 flex flex-col min-h-screen">
+    <!-- Mobile Header -->
     <header class="md:hidden fixed top-0 left-0 w-full bg-white shadow-md z-40">
         <div class="flex justify-between items-center p-4">
             <h1 class="text-xl font-bold text-gray-800">Omno</h1>
@@ -19,39 +20,42 @@
         </div>
     </header>
 
-    <aside class="bg-gradient-to-b from-blue-600 to-purple-600 text-white w-64 h-screen p-6 fixed transform transition-transform duration-300 flex flex-col z-50" id="sidebar">
-        <div class="flex items-center mb-8">
+    <!-- Sidebar -->
+    <aside class="bg-gradient-to-b from-blue-600 to-purple-600 text-white w-full md:w-64 h-screen p-6 fixed transform transition-transform duration-300 flex flex-col z-50" id="sidebar">
+        <div class="flex items-center mb-6">
             <div class="w-12 h-12 bg-purple-700 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">JD</div>
             <div>
-                <p class="font-semibold text-lg">codewithadejare</p>
+                <p class="font-semibold text-lg">John Doe</p>
                 <p class="text-sm opacity-75">Premium Member</p>
             </div>
             <button aria-label="Close menu" class="md:hidden ml-auto text-white" onclick="toggleSidebar()">
                 <i class="fas fa-times text-xl"></i>
             </button>
         </div>
-        <nav class="flex-1 space-y-2">
-            <a href="dashboard.html" class="block py-3 px-4 bg-purple-700 rounded-lg flex items-center"><i class="fas fa-tachometer-alt mr-3"></i> Dashboard</a>
-            <a href="transfer.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-paper-plane mr-3"></i> P2P Transfer</a>
-            <a href="transfer.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-globe mr-3"></i> International Transfer</a>
-            <a href="converter.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-exchange-alt mr-3"></i> Converter</a>
-            <a href="track.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-search mr-3"></i> Track Payment</a>
-            <a href="savings.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-piggy-bank mr-3"></i> Savings Goals</a>
-            <a href="crypto.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-coins mr-3"></i> Crypto Wallet</a>
-            <a href="stocks.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-chart-line mr-3"></i> Stocks</a>
-            <a href="bonds.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-chart-bar mr-3"></i> Bonds</a>
-            <a href="mutual-funds.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-money-bill-wave mr-3"></i> Mutual Funds</a>
-            <a href="payment-methods.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-credit-card mr-3"></i> Payment Methods</a>
-            <a href="#" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center relative" onclick="toggleNotifications()">
-                <i class="fas fa-bell mr-3"></i> Notifications
-                <span id="notificationCount" class="absolute right-4 bg-red-500 text-white text-xs rounded-full px-2 py-1">3</span>
-            </a>
-            <a href="support.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-headset mr-3"></i> Support</a>
-            <a href="profile.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-user mr-3"></i> Profile</a>
-            <a href="settings.html#security" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-shield-alt mr-3"></i> Security</a>
-            <a href="settings.html#preferences" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-cog mr-3"></i> Preferences</a>
-        </nav>
-        <div class="mt-auto">
+        <div class="flex-1 overflow-y-auto sidebar-nav">
+            <nav class="space-y-2">
+                <a href="dashboard.html" class="block py-3 px-4 bg-purple-700 rounded-lg flex items-center"><i class="fas fa-tachometer-alt mr-3"></i> Dashboard</a>
+                <a href="transfer.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-paper-plane mr-3"></i> P2P Transfer</a>
+                <a href="transfer.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-globe mr-3"></i> International Transfer</a>
+                <a href="converter.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-exchange-alt mr-3"></i> Converter</a>
+                <a href="track.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-search mr-3"></i> Track Payment</a>
+                <a href="savings.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-piggy-bank mr-3"></i> Savings Goals</a>
+                <a href="crypto.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-coins mr-3"></i> Crypto Wallet</a>
+                <a href="stocks.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-chart-line mr-3"></i> Stocks</a>
+                <a href="bonds.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-chart-bar mr-3"></i> Bonds</a>
+                <a href="mutual-funds.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-money-bill-wave mr-3"></i> Mutual Funds</a>
+                <a href="payment-methods.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-credit-card mr-3"></i> Payment Methods</a>
+                <a href="#" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center relative" onclick="toggleNotifications()">
+                    <i class="fas fa-bell mr-3"></i> Notifications
+                    <span id="notificationCount" class="absolute right-4 bg-red-500 text-white text-xs rounded-full px-2 py-1">3</span>
+                </a>
+                <a href="support.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-headset mr-3"></i> Support</a>
+                <a href="profile.html" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-user mr-3"></i> Profile</a>
+                <a href="settings.html#security" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-shield-alt mr-3"></i> Security</a>
+                <a href="settings.html#preferences" class="block py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center"><i class="fas fa-cog mr-3"></i> Preferences</a>
+            </nav>
+        </div>
+        <div class="mt-auto sidebar-footer">
             <button class="block w-full text-left py-3 px-4 hover:bg-purple-700 rounded-lg flex items-center mb-2" onclick="toggleDarkMode()">
                 <i class="fas fa-moon mr-3"></i> Dark Mode
             </button>
@@ -62,6 +66,7 @@
 
     <div id="sidebarBackdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 md:hidden" onclick="closeSidebar()"></div>
 
+    <!-- Notifications Panel -->
     <div class="fixed bottom-0 left-0 w-full bg-white shadow-lg transform translate-y-full transition-transform duration-300 z-50 rounded-t-lg" id="notificationsPanel">
         <div class="p-4 border-b flex justify-between items-center">
             <h3 class="text-xl font-semibold text-gray-800">Notifications</h3>
@@ -74,40 +79,28 @@
         </div>
     </div>
 
-    <main class="flex-1 p-4 md:p-8 pt-16 md:pt-8 ml-0 md:ml-64 mb-16 overflow-y-auto">
+    <!-- Main Content -->
+    <main class="flex-1 p-4 pt-16 md:pt-8 md:ml-64 mb-16">
         <div class="flex justify-between items-center mb-6 hidden md:flex">
             <h2 class="text-2xl md:text-3xl font-bold text-gray-800 animate-fade-in">Dashboard</h2>
-            <button aria-label="Open menu" class="md:hidden text-gray-800" onclick="toggleSidebar()">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
         </div>
 
         <div class="space-y-6">
-            <div class="bg-white p-6 rounded-lg shadow-lg animate-slide-up">
-                <div id="balanceSkeleton" class="animate-pulse hidden">
-                    <div class="h-6 bg-gray-200 rounded w-1/3 mb-4"></div>
-                    <div class="h-8 bg-gray-200 rounded w-1/2 mb-4"></div>
-                    <div class="flex space-x-4">
-                        <div class="h-12 bg-gray-200 rounded w-1/3"></div>
-                        <div class="h-12 bg-gray-200 rounded w-1/3"></div>
-                    </div>
-                </div>
-                <div id="balanceContent">
-                    <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-4">Your Balance</h3>
-                    <p class="text-2xl md:text-3xl font-bold text-gray-800">$90,750.09</p>
-                    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-4">
-                        <button aria-label="Send money" onclick="location.href='transfer.html'" class="bg-purple-600 text-white px-4 py-3 rounded-lg hover:bg-purple-700 transition-transform transform hover:scale-105 flex items-center justify-center">
-                            <i class="fas fa-paper-plane mr-2"></i> Send
-                        </button>
-                        <button aria-label="Add to wallet" onclick="location.href='transfer.html'" class="bg-gray-600 text-white px-4 py-3 rounded-lg hover:bg-gray-700 transition-transform transform hover:scale-105 flex items-center justify-center">
-                            <i class="fas fa-wallet mr-2"></i> Add to Wallet
-                        </button>
-                    </div>
+            <div class="bg-white p-6 rounded-xl shadow-md animate-slide-up">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Your Balance</h3>
+                <p class="text-2xl font-bold text-gray-800 mb-4">$90,750.09</p>
+                <div class="flex space-x-4">
+                    <button aria-label="Send money" onclick="location.href='transfer.html'" class="flex-1 bg-purple-600 text-white px-4 py-3 rounded-lg hover:bg-purple-700 transition-transform transform hover:scale-105 flex items-center justify-center">
+                        <i class="fas fa-paper-plane mr-2"></i> Send
+                    </button>
+                    <button aria-label="Add to wallet" onclick="location.href='transfer.html'" class="flex-1 bg-gray-600 text-white px-4 py-3 rounded-lg hover:bg-gray-700 transition-transform transform hover:scale-105 flex items-center justify-center">
+                        <i class="fas fa-wallet mr-2"></i> Add
+                    </button>
                 </div>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-lg animate-slide-up">
-                <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-4">Exchange Rates</h3>
+            <div class="bg-white p-6 rounded-xl shadow-md animate-slide-up">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Exchange Rates</h3>
                 <ul class="space-y-3">
                     <li class="flex justify-between"><span>USD/EUR</span><span>0.85</span><span class="text-green-500">+1.2%</span></li>
                     <li class="flex justify-between"><span>USD/AUD</span><span>1.35</span><span class="text-red-500">-0.8%</span></li>
@@ -116,8 +109,8 @@
                 </ul>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-lg animate-slide-up">
-                <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-4">Budget Tracker</h3>
+            <div class="bg-white p-6 rounded-xl shadow-md animate-slide-up">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Budget Tracker</h3>
                 <p class="text-gray-600 mb-2">Monthly Budget: <span id="monthlyBudget">$2,000</span></p>
                 <p class="text-gray-600 mb-2">Spent: <span id="spentAmount">$1,200</span></p>
                 <div class="w-full bg-gray-200 rounded-full h-4">
@@ -126,17 +119,17 @@
                 <button aria-label="Set budget" onclick="setBudget()" class="bg-purple-600 text-white px-4 py-3 rounded-lg hover:bg-purple-700 transition-transform transform hover:scale-105 mt-4 w-full">Set Budget</button>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-lg animate-slide-up">
-                <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-4">AI-Powered Insights</h3>
+            <div class="bg-white p-6 rounded-xl shadow-md animate-slide-up">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">AI-Powered Insights</h3>
                 <ul class="space-y-3">
-                    <li class="text-gray-600"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i> You’ve spent 20% more on dining this month. Consider adjusting your budget.</li>
-                    <li class="text-gray-600"><i class="fas fa-chart-line text-green-500 mr-2"></i> Your savings goal for vacation is on track—60% complete!</li>
-                    <li class="text-gray-600"><i class="fas fa-exclamation-circle text-red-500 mr-2"></i> BTC price dropped. Consider diversifying your crypto portfolio.</li>
+                    <li class="text-gray-600"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i> You’ve spent 20% more on dining this month.</li>
+                    <li class="text-gray-600"><i class="fas fa-chart-line text-green-500 mr-2"></i> Your savings goal is 60% complete!</li>
+                    <li class="text-gray-600"><i class="fas fa-exclamation-circle text-red-500 mr-2"></i> BTC price dropped. Diversify your portfolio.</li>
                 </ul>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-lg animate-slide-up">
-                <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-4">Quick Actions</h3>
+            <div class="bg-white p-6 rounded-xl shadow-md animate-slide-up">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h3>
                 <div class="space-y-3">
                     <button aria-label="P2P Transfer" onclick="location.href='transfer.html'" class="w-full bg-purple-600 text-white px-4 py-3 rounded-lg hover:bg-purple-700 transition-transform transform hover:scale-105 flex items-center justify-center">
                         <i class="fas fa-paper-plane mr-2"></i> P2P Transfer
@@ -150,8 +143,8 @@
                 </div>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-lg animate-slide-up">
-                <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-4">Recent Transactions</h3>
+            <div class="bg-white p-6 rounded-xl shadow-md animate-slide-up">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Recent Transactions</h3>
                 <div class="flex flex-wrap gap-2 mb-4">
                     <button aria-label="Show all transactions" onclick="filterTransactions('all')" class="bg-gray-200 px-4 py-2 rounded-lg hover:bg-gray-300">All</button>
                     <button aria-label="Show incoming transactions" onclick="filterTransactions('incoming')" class="bg-gray-200 px-4 py-2 rounded-lg hover:bg-gray-300">Incoming</button>
@@ -173,21 +166,12 @@
                         <span class="text-green-500">+$300</span>
                         <span class="text-sm">Apr 24, 2025</span>
                     </li>
-                    <li class="py-2 border-b flex justify-between items-center transaction outgoing">
-                        <span class="flex items-center"><i class="fas fa-arrow-up text-red-500 mr-2"></i> Sent to Olivia P.</span>
-                        <span class="text-red-500">-$150</span>
-                        <span class="text-sm">Apr 23, 2025</span>
-                    </li>
-                    <li class="py-2 border-b flex justify-between items-center transaction incoming">
-                        <span class="flex items-center"><i class="fas fa-arrow-down text-green-500 mr-2"></i> Received from James T.</span>
-                        <span class="text-green-500">+$700</span>
-                        <span class="text-sm">Apr 22, 2025</span>
-                    </li>
                 </ul>
             </div>
         </div>
     </main>
 
+    <!-- Bottom Navigation (Mobile Only) -->
     <nav class="md:hidden fixed bottom-0 left-0 w-full bg-white shadow-lg z-40">
         <div class="flex justify-around py-3">
             <a href="dashboard.html" class="flex flex-col items-center text-purple-600">

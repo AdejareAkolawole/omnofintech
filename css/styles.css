@@ -1,4 +1,116 @@
-/* Custom animations */
+/* Base styles (Mobile-first) */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overscroll-behavior: none; /* Prevent overscroll bounce */
+}
+
+main {
+    padding: 1rem;
+    padding-top: 5rem; /* Space for header */
+    padding-bottom: 5rem; /* Space for bottom nav */
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Sidebar (Mobile-first) */
+#sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar.open {
+    transform: translateX(0);
+}
+
+#sidebarBackdrop {
+    display: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#sidebarBackdrop.open {
+    display: block;
+    opacity: 1;
+}
+
+/* Disable sidebar scrolling on mobile */
+.sidebar-nav {
+    overflow-y: visible; /* No scrolling on mobile */
+}
+
+/* Notifications panel (Mobile-first) */
+#notificationsPanel {
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    max-height: 50vh;
+    border-radius: 16px 16px 0 0;
+}
+
+#notificationsPanel.open {
+    transform: translateY(0);
+}
+
+/* Card styling (Mobile-first) */
+.bg-white {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Typography (Mobile-first) */
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p, li, span {
+    font-size: 1rem;
+}
+
+/* Buttons (Mobile-first) */
+button, a.button {
+    min-height: 48px;
+    font-size: 1rem;
+    padding: 12px 16px;
+}
+
+/* Bottom navigation (Mobile-first) */
+nav {
+    height: 60px;
+    border-top: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav a, nav button {
+    transition: color 0.2s ease-in-out;
+}
+
+nav a:hover, nav button:hover {
+    color: #6b7280;
+}
+
+/* Transaction list (Mobile-first) */
+#transactionsList li {
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#transactionsList li span {
+    flex: 1 1 auto;
+}
+
+/* Animations */
 .animate-fade-in {
     animation: fadeIn 0.5s ease-in;
 }
@@ -17,139 +129,38 @@
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Ensure sidebar is hidden off-screen by default on mobile */
-#sidebar {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-}
-
-#sidebar.open {
-    transform: translateX(0);
-}
-
-/* Backdrop for sidebar on mobile */
-#sidebarBackdrop {
-    display: none;
-    transition: opacity 0.3s ease-in-out;
-}
-
-#sidebarBackdrop.open {
-    display: block;
-    opacity: 1;
-}
-
-/* Notifications panel as a bottom sheet on mobile */
-#notificationsPanel {
-    transform: translateY(100%);
-    transition: transform 0.3s ease-in-out;
-    width: 100%;
-    max-width: 100%;
-    border-radius: 16px 16px 0 0;
-}
-
-#notificationsPanel.open {
-    transform: translateY(0);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    #sidebar {
-        width: 70%; /* Sleeker width on mobile */
-    }
-
-    #notificationsPanel {
-        width: 100%;
-        max-height: 50vh;
-    }
-
-    /* Fix main content to fit within viewport */
-    main {
-        margin-left: 0 !important;
-        padding: 16px;
-        padding-top: 70px; /* Space for header */
-        padding-bottom: 80px; /* Space for bottom nav */
-        min-height: calc(100vh - 140px); /* Adjust for header and nav */
-        box-sizing: border-box;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    }
-
-    /* Adjust font sizes and spacing for mobile */
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    h3 {
-        font-size: 1.25rem;
-    }
-
-    p, li, span {
-        font-size: 0.95rem;
-    }
-
-    /* Increase button sizes for better touch targets */
-    button, a.button {
-        min-height: 48px;
-        font-size: 1rem;
-        padding: 12px 16px;
-    }
-
-    /* Adjust card padding and margins */
-    .bg-white {
-        padding: 1rem; /* Reduced padding for mobile */
-        margin-bottom: 1rem; /* Reduced margin */
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Bottom navigation styling */
-    nav {
-        border-top: 1px solid #e5e7eb;
-        background-color: #ffffff;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        height: 60px; /* Fixed height for bottom nav */
-    }
-
-    nav a, nav button {
-        transition: color 0.2s ease-in-out;
-    }
-
-    nav a:hover, nav button:hover {
-        color: #6b7280; /* Hover effect for nav items */
-    }
-
-    /* Ensure transaction list items don't overflow */
-    #transactionsList li {
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    #transactionsList li span {
-        flex: 1 1 auto;
-    }
-
-    /* Adjust button groups for better mobile display */
-    .flex-col.md\\:flex-row {
-        flex-direction: column !important;
-    }
-
-    .space-x-4 > * + * {
-        margin-left: 0 !important;
-        margin-top: 1rem !important;
-    }
-}
-
 /* Desktop-specific styles */
 @media (min-width: 769px) {
+    main {
+        margin-left: 256px;
+        padding: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
     #sidebar {
-        transform: translateX(0); /* Always visible on desktop */
+        transform: translateX(0);
         width: 256px;
     }
 
-    main {
-        margin-left: 256px;
-        padding: 32px;
+    /* Enable sidebar scrolling on desktop */
+    .sidebar-nav {
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #a1a1aa #ffffff00;
+    }
+
+    .sidebar-nav::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .sidebar-nav::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .sidebar-nav::-webkit-scrollbar-thumb {
+        background-color: #a1a1aa;
+        border-radius: 10px;
     }
 
     #notificationsPanel {
@@ -165,6 +176,18 @@
     .bg-white {
         padding: 1.5rem;
         margin-bottom: 1.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    p, li, span {
+        font-size: 1.1rem;
     }
 }
 
@@ -203,4 +226,8 @@
 
 .dark-mode nav a:hover, .dark-mode nav button:hover {
     color: #ffffff;
+}
+
+.dark-mode .sidebar-nav::-webkit-scrollbar-thumb {
+    background-color: #9ca3af;
 }
